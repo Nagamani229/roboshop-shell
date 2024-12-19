@@ -40,13 +40,20 @@ VALIDATE $? "Enabling Nodejs:18"
 
 dnf install nodejs -y &>> $LOGFILE
 
-VALIDATE $? "Installing Nodejs:18"  
+VALIDATE $? "Installing Nodejs:18"
 
-useradd roboshop &>> $LOGFILE
+id roboshop
+if [$? -ne 0]
+then
+    useradd roboshop 
+    VALIDATE $? "roboshop user creation"
+else
+   echo "roboshop user alerady exits $Y skipping $N"
+fi
 
 VALIDATE $? "Creating roboshop user"  
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE
 
 VALIDATE $? "creating app directory"  
 
@@ -56,7 +63,7 @@ VALIDATE $? " downloading catalogue application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 
 VALIDATE $? " unzipping catalogue"  
 
