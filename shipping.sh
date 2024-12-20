@@ -5,6 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+HOST_NAME="mysql.devopstraining.space"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -84,7 +85,7 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "install MySQL client"
 
-mysql -h 172.31.87.37 -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 
 VALIDATE $? "loading shipping data"
 
