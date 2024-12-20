@@ -40,7 +40,7 @@ VALIDATE $? "Downloading rabbitmq script"
 
 dnf install rabbitmq-server -y &>> $LOGFILE
 
-VALIADATE $? " Installing rabbitmq server"
+VALIDATE $? " Installing rabbitmq server"
 
 systemctl enable rabbitmq-server &>> $LOGFILE
 
