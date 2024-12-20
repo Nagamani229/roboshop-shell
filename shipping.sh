@@ -88,7 +88,7 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "Installing mtsql client"
 
-mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 </app/schema/shipping.sql &>> $LOGFILE
 
 VALIDATE $? "Loading shipping data"
 
