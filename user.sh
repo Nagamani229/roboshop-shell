@@ -63,7 +63,7 @@ VALIDATE $? "downloading user application"
 
 cd /app 
 
-unzip /tmp/user.zip &>> $LOHFILE
+unzip /tmp/user.zip &>> $LOGFILE
 
 VALIDATE $? "unzipping user"
 
@@ -71,7 +71,7 @@ npm install &>> $LOGFILE
 
 VALIDATE $? "installing dependencies"
 
-cp /home/centos/roboshop-shell/user.service  /etc/systemd/system/user.service
+cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
 
 systemctl daemon-reload  &>> $LOGFILE
 
