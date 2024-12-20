@@ -60,7 +60,7 @@ mvn clean package &>> $LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-mv target/shipping-1.0.jar shipping.sql &>> $LOGFILE
+mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
 
 VALIDATE $? "renaming jar file"
 
@@ -84,7 +84,11 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "install MySQL client"
 
-mysql -h mysql.daws76s.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+ls -la /app/schema/shipping.sql
+
+mkdir -p /app/schema
+
+mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 
 VALIDATE $? "loading shipping data"
 
