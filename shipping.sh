@@ -84,7 +84,7 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "install MySQL client"
 
-mkdir -p /schema/shipping.sql  $>> $LOGFILE
+mkdir -p /schema $>> $LOGFILE
 
 VALIDATE $? "Creating schema directory"
 
