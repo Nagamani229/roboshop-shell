@@ -29,22 +29,18 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
-dnf install maven -y
+dnf install maven -y &>> $LOGFILE
 
-VALIDATE $? "Installing maven"
-
-id roboshop
+id roboshop #if roboshop user does not exist, then it is failure
 if [ $? -ne 0 ]
 then
-    useradd roboshop 
+    useradd roboshop
     VALIDATE $? "roboshop user creation"
 else
-   echo -e "roboshop user alerady exits $Y skipping $N"
+    echo -e "roboshop user already exist $Y SKIPPING $N"
 fi
 
-VALIDATE $? "Creating roboshop user"  
-
-mkdir -p /app &>> $LOGFILE
+mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
@@ -52,13 +48,13 @@ curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.z
 
 VALIDATE $? "Downloading shipping"
 
-cd /app &>> $LOGFILE
+cd /app
 
-VALIDATE $? "Moving to app directory"
+VALIDATE $? "moving to app directory"
 
-unzip /tmp/shipping.zip &>> $LOGFILE
+unzip -o /tmp/shipping.zip &>> $LOGFILE
 
-VALIDATE $? "Unzipping shipping"
+VALIDATE $? "unzipping shipping"
 
 mvn clean package &>> $LOGFILE
 
@@ -66,32 +62,32 @@ VALIDATE $? "Installing dependencies"
 
 mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
 
-VALIDATE $? "Remaining jar file"
+VALIDATE $? "renaming jar file"
 
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>> $LOGFILE
 
-VALIDATE $? "Copying shipping service"
+VALIDATE $? "copying shipping service"
 
 systemctl daemon-reload &>> $LOGFILE
 
-VALIDATE $? "Deamon reload"
+VALIDATE $? "deamon reload"
 
-systemctl enable shipping &>> $LOGFILE
+systemctl enable shipping  &>> $LOGFILE
 
-VALIDATE $? "Enable shipping"
+VALIDATE $? "enable shipping"
 
 systemctl start shipping &>> $LOGFILE
 
-VALIDATE $? "Start shipping"
+VALIDATE $? "start shipping"
 
 dnf install mysql -y &>> $LOGFILE
 
-VALIDATE $? "Installing mtsql client"
+VALIDATE $? "install MySQL client"
 
-mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 </app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql.daws76s.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 
-VALIDATE $? "Loading shipping data"
+VALIDATE $? "loading shipping data"
 
 systemctl restart shipping &>> $LOGFILE
 
-VALIDATE $? "Restarting shipping"
+VALIDATE $? "restart shipping"
