@@ -62,7 +62,7 @@ cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 
 VALIDATE $? "Copying roboshop reverse proxy config"
 
-systemctl restart nginx &>> $LGOFILE
+systemctl restart nginx &>> $LOGFILE
 
 VALIDATE $? "Restarting nginx"
 
