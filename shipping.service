@@ -5,8 +5,8 @@ Description=Shipping Service
 User=roboshop
 Environment=CART_ENDPOINT=cartdevopstraining.space:8080
 Environment=DB_HOST=mysql.devopstraining.space
-ExecStart=/bin/java -jar /app/shipping.jar
-SyslogIdentifier=shipping.sql
+ExecStart=/bin/java -jar /app/shipping.sql
+SyslogIdentifier=shipping
 
 [Install]
 WantedBy=multi-user.target
