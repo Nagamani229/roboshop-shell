@@ -84,9 +84,13 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "install MySQL client"
 
-ls -la /app/schema/shipping.sql
+mkdir -p /app/schema $>> $LOGFILE
 
-mkdir -p /app/schema
+VALIDATE $? "Creating schema directory"
+
+unzip -l /tmp/shipping.zip
+
+VALIDATE $? "Unzipping shipping"
 
 mysql -h mysql.devopstraining.space -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 
