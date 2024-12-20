@@ -36,11 +36,11 @@ VALIDATE $? "Downloading erlang script"
 
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>> $LOGFILE
 
-VALIDAE $? "Downloading rabbitmq script"
+VALIDATE $? "Downloading rabbitmq script"
 
 dnf install rabbitmq-server -y &>> $LOGFILE
 
-VALIADTE $? " Installing rabbitmq server"
+VALIADATE $? " Installing rabbitmq server"
 
 systemctl enable rabbitmq-server &>> $LOGFILE
 
