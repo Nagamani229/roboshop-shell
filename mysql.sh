@@ -34,7 +34,7 @@ dnf module disable mysql -y  &>> $LOGFILE
 
 VALIDATE $? "Disable current sql version"  
 
-CP mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOGFILE
+cp mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOGFILE
 
 VALIDATE $? "Copied MYSQL repo"
 
