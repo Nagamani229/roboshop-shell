@@ -48,7 +48,7 @@ then
     useradd roboshop 
     VALIDATE $? "roboshop user creation"
 else
-   echo "roboshop user alerady exits $Y skipping $N"
+   echo -e "roboshop user alerady exits $Y skipping $N"
 fi
 
 VALIDATE $? "Creating roboshop user"  
