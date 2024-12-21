@@ -22,15 +22,15 @@ do
     --hosted-zone-id $ZONE_ID \
     --change-batch "
     {
-         "Comment": "Testing creating a record set"
+         "Comment": "Testing creating a record set",
         ,"Changes": [{
-         "Action"              : "CREATE"
+         "Action"              : "CREATE",
         ,"ResourceRecordSet"  : {
-         "Name"              : "$i.$DOMAIN_NAME"
-         ,"Type"             : "A"
-         ,"TTL"              : 1
+         "Name"              : "$i.$DOMAIN_NAME",
+         ,"Type"             : "A",
+         ,"TTL"              : 1,
           ,"ResourceRecords"  : [{
-              "Value"         : "$IP_ADDRESS"
+              "Value"         : "$IP_ADDRESS",
            }]
         }
         }]
