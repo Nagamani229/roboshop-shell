@@ -1,7 +1,7 @@
 #!/bin/bash
 
 AMI="ami-0b4f379183e5706b9"
-SG-ID="sg-0cd7597a2d7a778cd"
+SG_ID="sg-0cd7597a2d7a778cd"
 INSTANCES=("mongodb" "redis" "rabbitmq" "mysql" "shipping" "cart" "user" "catalogue" "payment" "dispatch" "web")
 
 for i in "${INSTANCES[@]}"
