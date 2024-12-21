@@ -19,7 +19,7 @@ do
     echo "$i: $IP_ADDRESS"
     #create r53 records,make sure you delete extsting records
    aws route53 change-resource-record-sets \
-  --hosted-zone-id $zoneid \
+  --hosted-zone-id $ZONE_ID \
   --change-batch '
   {
     "Comment": "Creating a record set for cognito endpoint"
