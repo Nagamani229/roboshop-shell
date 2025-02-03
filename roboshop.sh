@@ -1,7 +1,7 @@
 #!/bin/bash
 
 AMI=ami-0b4f379183e5706b9 #this keeps on changing
-SG_ID=sg-0cd7597a2d7a778cd #replace with your SG ID
+SG_ID=sg-03cf549d14fe6783d #replace with your SG ID
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 ZONE_ID=Z10005071MBZBLDYZOT2T
 DOMAIN_NAME="devopstraining.space"
